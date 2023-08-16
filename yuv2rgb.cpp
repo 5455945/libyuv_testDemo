@@ -70,7 +70,7 @@ void rgb2I420_Scale(cv::Mat &rgbMat, int width, int height, float scale_value)
 	int dstWidth = (int)width*scale_value;    
 	int dstHeight= (int)height*scale_value;  
 
-    std::cout<<"----- I420  scale to width  :  "<< dstWidth << "       height   :  " <<dstHeight<<std::endl;
+    std::cout << "----- I420  scale to width  :  " << dstWidth << "       height   :  " << dstHeight << std::endl;
 
 	uint8_t *yuv420_Scale = new uint8_t[dstWidth *dstHeight*3 / 2];
 
@@ -134,30 +134,29 @@ void rgb2I420_Scale(cv::Mat &rgbMat, int width, int height, float scale_value)
 }
 
 
-int main() 
-{
-        int width = 1280, height = 720;
-        float scale_value = 0.25;
-        int dstWidth = (int)width*scale_value;    
-        int dstHeight= (int)height*scale_value;  
-
-        int framesize = width * height * 2;
-
-        uint8_t *yuv422 = new uint8_t[framesize];
-
-        std::cout<<"next read\n";
-        FILE *yuv422File = fopen("./00316_3.yuyv", "rb");
-        fread(yuv422, framesize * sizeof(uint8_t), 1, yuv422File);
-        fclose(yuv422File);
-   
-
-        // yuy2 convert to ARGB and save image
-        cv::Mat argb = cv::Mat(height, width, CV_8UC4, cv::Scalar::all(0));
-        yuyv2RGB(yuv422, argb, width, height);
-
-        rgb2I420_Scale(argb,  width,  height,  scale_value);
-
-
-        std::cout<<"----- END \n";
-        return 0;
+int main() {
+  int width = 1280, height = 720;
+  float scale_value = 0.25;
+  int dstWidth = (int)width * scale_value;    
+  int dstHeight = (int)height * scale_value;  
+  
+  int framesize = width * height * 2;
+  
+  uint8_t *yuv422 = new uint8_t[framesize];
+  
+  std::cout << "next read\n";
+  FILE *yuv422File = fopen("./00316_3.yuyv", "rb");
+  fread(yuv422, framesize * sizeof(uint8_t), 1, yuv422File);
+  fclose(yuv422File);
+  
+  
+  // yuy2 convert to ARGB and save image
+  cv::Mat argb = cv::Mat(height, width, CV_8UC4, cv::Scalar::all(0));
+  yuyv2RGB(yuv422, argb, width, height);
+  
+  rgb2I420_Scale(argb,  width,  height,  scale_value);
+  
+  
+  std::cout << "----- END \n";
+  return 0;
 }

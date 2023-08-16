@@ -123,3 +123,16 @@ libyuv::ARGBToI420(
 缩放后图片：
 
 <img style="margin:10px auto;display:block" width=224 src="./img/yuyv2i420_scale.jpg"/>
+
+
+## 编译运行
+```
+# on msys2/mingw64
+# vim ~/bashrc
+# export PATH=.:/wingw64/bin:/wingw64/lib:$PATH
+mkdir build && cd build
+cmake -G"Unix Makefiles" -S .. -B .
+cmake --build .
+./yuyv2i420.exe
+./yuv2rgb.exe
+```

@@ -245,11 +245,11 @@ int main(int argc, char *argv[]) {
 			scale_value = std::stof(argv[1]);
         }
 
-        std::string yuvfile = "./00316_3.yuyv";
+        std::string yuvfile = "../00316_3.yuyv";
 
         //ust opencv convert  test      
         std::cout << " \n******************* opencv *******************" << std::endl;
-         opencvConvert(yuvfile, width, height, scale_value);
+        opencvConvert(yuvfile, width, height, scale_value);
         
         std::cout << "******************* libyuv *******************" << std::endl;
         yuvLibConvert(yuvfile, width, height, scale_value);
