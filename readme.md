@@ -130,9 +130,74 @@ libyuv::ARGBToI420(
 # on msys2/mingw64
 # vim ~/bashrc
 # export PATH=.:/wingw64/bin:/wingw64/lib:$PATH
-mkdir build && cd build
+git clone https://github.com/5455945/libyuv_testDemo.git
+cd libyuv_testDemo && mkdir build && cd build
 cmake -G"Unix Makefiles" -S .. -B .
 cmake --build .
 ./yuyv2i420.exe
 ./yuv2rgb.exe
+```
+
+```
+soft@lfyp12023 MINGW64 ~
+$ cd /d/git/mygit
+
+soft@lfyp12023 MINGW64 /d/git/mygit
+$ git clone https://github.com/5455945/libyuv_testDemo.git
+Cloning into 'libyuv_testDemo'...
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (27/27), done.
+remote: Total 30 (delta 10), reused 20 (delta 3), pack-reused 0
+Receiving objects: 100% (30/30), 2.55 MiB | 2.78 MiB/s, done.
+Resolving deltas: 100% (10/10), done.
+
+soft@lfyp12023 MINGW64 /d/git/mygit
+$ cd libyuv_testDemo && mkdir build && cd build
+
+soft@lfyp12023 MINGW64 /d/git/mygit/libyuv_testDemo/build
+$ cmake -G"Unix Makefiles" -S .. -B .
+-- The C compiler identification is GNU 13.2.0
+-- The CXX compiler identification is GNU 13.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: D:/install/msys64/mingw64/bin/cc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/install/msys64/mingw64/bin/c++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found OpenCV: D:/install/msys64/mingw64 (found version "4.8.0")
+-- Configuring done (1.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: D:/git/mygit/libyuv_testDemo/build
+
+soft@lfyp12023 MINGW64 /d/git/mygit/libyuv_testDemo/build
+$ cmake --build .
+[ 25%] Building CXX object CMakeFiles/yuyv2i420.dir/yuyv2i420.cpp.obj
+[ 50%] Linking CXX executable yuyv2i420.exe
+[ 50%] Built target yuyv2i420
+[ 75%] Building CXX object CMakeFiles/yuv2rgb.dir/yuv2rgb.cpp.obj
+[100%] Linking CXX executable yuv2rgb.exe
+[100%] Built target yuv2rgb
+
+soft@lfyp12023 MINGW64 /d/git/mygit/libyuv_testDemo/build
+$ ./yuyv2i420.exe
+
+******************* opencv *******************
+yuyv   convert  to  BGR :  1.4498    ms
+
+ ******************* libyuv *******************
+yuy2 -> yuv420   time :  0.3738    ms
+ yuv420 -> BGR  convert   time :  0.1882    ms
+ yuy2 -> yuv420 -> BGR  convert   time :  0.562    ms
+
+
+soft@lfyp12023 MINGW64 /d/git/mygit/libyuv_testDemo/build
+$ ./yuv2rgb.exe
+next read
+----- I420  scale to width  :  320       height   :  180
+----- END
 ```

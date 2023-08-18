@@ -72,12 +72,12 @@ set(libyuv_DIR /mingw64/lib)
 
 # yuy2 to I420
 add_executable(${yuyv2i420} yuyv2i420.cpp)
-target_link_libraries(${yuyv2i420} D:/install/msys64/mingw64/lib/libyuv.a ${OpenCV_LIBS})
+target_link_libraries(${yuyv2i420} libyuv.a ${OpenCV_LIBS})
 
 add_executable(${yuv2rgb} yuv2rgb.cpp)
-target_link_libraries(${yuv2rgb} D:/install/msys64/mingw64/lib/libyuv.a ${OpenCV_LIBS})
+target_link_libraries(${yuv2rgb} libyuv.a ${OpenCV_LIBS})
 
 #set (CMAKE_CXX_LINK_EXECUTABLE "${CMAKE_CXX_LINK_EXECUTABLE} -ldl") 
 
 file(COPY ${CMAKE_SOURCE_DIR}/00316_3.yuyv DESTINATION ${CMAKE_CURRENT_BINARY_DIR} FOLLOW_SYMLINK_CHAIN)
-file(COPY ${CMAKE_SOURCE_DIR}/img DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/img FOLLOW_SYMLINK_CHAIN)
+file(COPY ${CMAKE_SOURCE_DIR}/img DESTINATION ${CMAKE_CURRENT_BINARY_DIR} FOLLOW_SYMLINK_CHAIN)
